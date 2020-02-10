@@ -13,16 +13,16 @@ def read_train_val_indices(train_indices_path, val_indices_path):
     return pd.concat([train_df, val_df])
 
 
-image_root_dir = Path("/data2/datasets/clobotics/ccth/images/cropped/versions/train20200129_val20200117_test20191122/for-image-quality-model/round3")
-train_indices = Path("/data2/datasets/clobotics/ccth/indices/versions/train20200129_val20200117_test20191122/round3/trainval.txt")
-val_indices = Path("/data2/datasets/clobotics/ccth/indices/versions/train20200129_val20200117_test20191122/round3/trainval.txt")
-n_max_epochs = 3
+image_root_dir = Path("/data2/datasets/clobotics/ccth/images/cropped/versions/train20200129_val20200117_test20191122/for-image-quality-model/round5")
+train_indices = Path("/data2/datasets/clobotics/ccth/indices/versions/train20200129_val20200117_test20191122/round5/trainval.txt")
+val_indices = Path("/data2/datasets/clobotics/ccth/indices/versions/train20200129_val20200117_test20191122/round5/trainval.txt")
+n_max_epochs = 4
 batch_size = 96
 max_lr = 9e-4
 tfms = get_transforms(
     do_flip=True,  # default True
     flip_vert=False,  # default False
-    max_rotate=15.0,  # default 10.0
+    max_rotate=10.0,  # default 10.0
     max_zoom=1.0,  # default 1.1
     max_lighting=0.2,  # default 0.2
     max_warp=0.2,  # default 0.2

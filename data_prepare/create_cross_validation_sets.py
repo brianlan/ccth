@@ -20,7 +20,7 @@ def create_cross_validation_sets(image_root_dir, cv_save_dir, image_suffix=".jpg
     image_root_dir = Path(image_root_dir)
     cv_save_dir = Path(cv_save_dir)
     im_paths = np.array(sorted(image_root_dir.rglob(f"*.{image_suffix.strip('.')}")))
-    labels = np.array([p.parent.parent.stem for p in im_paths])
+    labels = np.array([p.relative_to(image_root_dir).parts[0] for p in im_paths])
     skf = StratifiedKFold(n_splits=5)
     for i, (train_index, val_index) in enumerate(skf.split(im_paths, labels)):
         print(f"\n------ Fold {i} ------")
